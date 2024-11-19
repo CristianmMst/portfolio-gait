@@ -1,0 +1,57 @@
+---
+import "@/styles/globals.css";
+import Logo from "../assets/Logo.svg";
+import LogoText from "../assets/LogoText.svg";
+
+import Link from "../components/Link.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-primary">
+    <nav
+      class="flex justify-between items-center px-16 py-4 fixed top-0 left-0 w-full"
+    >
+      <div class="flex items-center gap-x-4">
+        <img src={Logo.src} alt="Logo" class="w-10" />
+        <img src={LogoText.src} alt="Logo" class="w-16" />
+      </div>
+      <ul class="flex gap-x-4 text-white">
+        <Link href="#welcome">Inicio</Link>
+        <Link href="#objectives">Objetivos</Link>
+        <Link href="#results">Resultados</Link>
+        <Link href="#team">Equipo</Link>
+        <Link href="#documents">Documentos</Link>
+      </ul>
+    </nav>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  main {
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url("../assets/images/background.webp");
+  }
+
+  #speech {
+    &::backdrop {
+      backdrop-filter: blur(2px);
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Img1 from "@/assets/images/01-carousel.jpg";
+import Img2 from "@/assets/images/02-carousel.jpg";
+import Img3 from "@/assets/images/03-carousel.jpg";
+import Img4 from "@/assets/images/04-carousel.jpg";
+import Img5 from "@/assets/images/05-carousel.jpg";
+---
+
+<section
+  class="grid place-content-center min-h-screen bg-gradient-to-t from-transparent from-0% to-primary to-[150%]"
+>
+  <div
+    class="flex relative overflow-x-auto scroll snap-x snap-mandatory w-[800px] rounded-md"
+  >
+    <div class="w-[800px] flex-shrink-0 snap-center">
+      <img src={Img1.src} alt="Img1" class="w-full" />
+    </div>
+    <div id="01-specific" class="w-[800px] flex-shrink-0 snap-center">
+      <img src={Img2.src} alt="Img2" />
+    </div>
+    <div class="w-[800px] flex-shrink-0 snap-center">
+      <img src={Img3.src} alt="Img3" />
+    </div>
+    <div class="w-[800px] flex-shrink-0 snap-center">
+      <img src={Img4.src} alt="Img4" />
+    </div>
+    <div class="w-[800px] flex-shrink-0 snap-center">
+      <img src={Img5.src} alt="Img5" />
+    </div>
+    <div class="absolute bottom-0 left-1/2 bg-slate-500">
+      <a href="#01-specific">uno</a>
+      <a href="">dos</a>
+      <a href="">tres</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  div::-webkit-scrollbar {
+    scroll-behavior: smooth;
+    display: none;
+  }
+</style>

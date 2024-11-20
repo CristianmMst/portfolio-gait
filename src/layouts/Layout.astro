@@ -1,5 +1,7 @@
 ---
 import "@/styles/globals.css";
+
+import { Image } from "astro:assets";
 import Logo from "../assets/Logo.svg";
 import LogoText from "../assets/LogoText.svg";
 
@@ -27,15 +29,15 @@ const { title } = Astro.props;
       class="flex justify-between items-center px-16 py-4 fixed top-0 left-0 w-full z-50"
     >
       <div class="flex items-center gap-x-4">
-        <img src={Logo.src} alt="Logo" class="w-10" />
-        <img src={LogoText.src} alt="Logo" class="w-16" />
+        <Image src={Logo} alt="Logo" class="w-10" />
+        <Image src={LogoText} alt="Logo" class="w-16" />
       </div>
       <ul class="flex gap-x-4 text-white">
         <Link href="#welcome">Inicio</Link>
+        <Link href="#about">Acerca</Link>
         <Link href="#objectives">Objetivos</Link>
-        <Link href="#results">Resultados</Link>
-        <Link href="#team">Equipo</Link>
         <Link href="#documents">Documentos</Link>
+        <Link href="#team">Equipo</Link>
       </ul>
     </nav>
     <slot />

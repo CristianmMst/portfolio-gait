@@ -1,0 +1,75 @@
+---
+const documents = [
+  {
+    title: "Caracterización de la población",
+    image: "https://picsum.photos/id/10/400/300",
+    description:
+      "Análisis detallado de los usuarios objetivo, incluyendo datos demográficos y comportamientos relevantes.",
+  },
+  {
+    title: "Matriz DOFA",
+    image: "https://picsum.photos/id/20/400/300",
+    description:
+      "Evaluación estratégica de fortalezas, oportunidades, debilidades y amenazas del proyecto.",
+  },
+  {
+    title: "Etapas de desarrollo",
+    image: "https://picsum.photos/id/40/400/300",
+    description:
+      "Resumen de las fases clave del proyecto, desde la planeación hasta la implementación.",
+  },
+  // {
+  //   title: "Modelo de la base de datos",
+  //   image: "https://picsum.photos/id/30/400/300",
+  //   description:
+  //     "Estructura técnica que define las relaciones entre los datos del sistema.",
+  // },
+  {
+    title: "Mockups",
+    image: "https://picsum.photos/id/50/400/300",
+    description:
+      "Diseños visuales preliminares que ilustran la interfaz y funcionalidad de la plataforma.",
+  },
+];
+---
+
+<section class="grid place-content-center p-8 text-white">
+  <div class="container grid max-w-4xl">
+    <div class="info-documents">
+      <h2 class="text-4xl font-bold mb-2">Documentos</h2>
+      <p class="max-w-md">
+        En esta sección encontrarás una recopilación organizada de los
+        documentos clave que respaldan el desarrollo del proyecto. Cada recurso
+        ha sido diseñado para proporcionar una visión más profunda y técnica de
+        los diferentes aspectos, desde la planificación y análisis hasta los
+        resultados obtenidos.
+      </p>
+    </div>
+    {
+      documents.map((document) => {
+        return (
+          <div class="bg-primary p-4 rounded-md">
+            <h3 class="font-bold">{document.title}</h3>
+            <p class="text-sm">{document.description}</p>
+            <button class="bg-accent rounded-md mt-4 text-primary px-4 py-2">
+              Ver documento
+            </button>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+
+<style>
+  .container {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .info-documents {
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+  }
+</style>

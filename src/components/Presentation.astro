@@ -43,7 +43,32 @@ import Rocket from "../components/Rocket.astro";
       <Rocket />
     </div>
   </div>
-  <div id="speech" class="w-3/4 rounded-md p-0 bg-transparent" popover>
+  <dialog id="speech" class="w-3/4 rounded-md p-0 bg-transparent" popover>
     <video class="w-full" src="/videos/speech.mp4" controls></video>
-  </div>
+  </dialog>
 </section>
+
+<style>
+  #speech {
+    scale: 0;
+    opacity: 0;
+    transition:
+      scale 0.4s ease-in-out,
+      display 0.4s ease-in-out allow-discrete,
+      opacity 0.4s ease-in-out;
+    &::backdrop {
+      backdrop-filter: blur(2px);
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &:popover-open {
+      scale: 1;
+      opacity: 1;
+
+      @starting-style {
+        scale: 0;
+        opacity: 0;
+      }
+    }
+  }
+</style>

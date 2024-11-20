@@ -4,40 +4,52 @@ import Img2 from "@/assets/images/02-carousel.jpg";
 import Img3 from "@/assets/images/03-carousel.jpg";
 import Img4 from "@/assets/images/04-carousel.jpg";
 import Img5 from "@/assets/images/05-carousel.jpg";
+
+const images = Array.from({ length: 5 }).map((_, i) => `#0${i + 1}-specific`);
 ---
 
 <section
-  class="grid place-content-center min-h-screen bg-gradient-to-t from-transparent from-0% to-primary to-[150%]"
+  id="objectives"
+  class="grid relative place-content-center min-h-screen bg-gradient-to-t from-transparent from-0% to-primary to-[150%]"
 >
   <div
-    class="flex relative overflow-x-auto scroll snap-x snap-mandatory w-[800px] rounded-md"
+    class="slider flex w-3/4 overflow-x-auto aspect-video mx-auto rounded-md select-none"
   >
-    <div class="w-[800px] flex-shrink-0 snap-center">
-      <img src={Img1.src} alt="Img1" class="w-full" />
-    </div>
-    <div id="01-specific" class="w-[800px] flex-shrink-0 snap-center">
-      <img src={Img2.src} alt="Img2" />
-    </div>
-    <div class="w-[800px] flex-shrink-0 snap-center">
-      <img src={Img3.src} alt="Img3" />
-    </div>
-    <div class="w-[800px] flex-shrink-0 snap-center">
-      <img src={Img4.src} alt="Img4" />
-    </div>
-    <div class="w-[800px] flex-shrink-0 snap-center">
-      <img src={Img5.src} alt="Img5" />
-    </div>
-    <div class="absolute bottom-0 left-1/2 bg-slate-500">
-      <a href="#01-specific">uno</a>
-      <a href="">dos</a>
-      <a href="">tres</a>
-    </div>
+    <img id="01-specific" src={Img1.src} alt="Img1" />
+    <img id="02-specific" src={Img2.src} alt="Img2" />
+    <img id="03-specific" src={Img3.src} alt="Img3" />
+    <img id="04-specific" src={Img4.src} alt="Img4" />
+    <img id="05-specific" src={Img5.src} alt="Img5" />
+  </div>
+  <div class="flex gap-x-2 absolute bottom-40 left-1/2 -translate-x-1/2 z-10">
+    {
+      images.map((img) => (
+        <a
+          href={img}
+          class="bg-accent w-2 h-2 rounded-full transition-all duration-500"
+        />
+      ))
+    }
+  </div>
+  <div
+    class="w-[400px] h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary rounded-full -z-10 blur-3xl"
+  >
   </div>
 </section>
 
 <style>
-  div::-webkit-scrollbar {
+  .slider {
     scroll-behavior: smooth;
-    display: none;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    img {
+      flex: 1 0 100%;
+      object-fit: cover;
+      scroll-snap-align: center;
+    }
   }
 </style>

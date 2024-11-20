@@ -12,7 +12,7 @@ const callback = (entries, observer) => {
 
 const observer = new IntersectionObserver(callback, {
   root: null,
-  threshold: 1,
+  threshold: 0.8,
 });
 
 observer.observe(observedElement);

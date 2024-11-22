@@ -1,39 +1,31 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const documents = [
   {
-    title: "Caracterización de la población",
-    image: "https://picsum.photos/id/10/400/300",
-    description:
-      "Análisis detallado de los usuarios objetivo, incluyendo datos demográficos y comportamientos relevantes.",
-  },
-  {
     title: "Matriz DOFA",
-    image: "https://picsum.photos/id/20/400/300",
     description:
       "Evaluación estratégica de fortalezas, oportunidades, debilidades y amenazas del proyecto.",
   },
   {
+    title: "Caracterización de la población",
+    description:
+      "Análisis detallado de los usuarios objetivo, incluyendo datos demográficos.",
+  },
+  {
     title: "Etapas de desarrollo",
-    image: "https://picsum.photos/id/40/400/300",
     description:
       "Resumen de las fases clave del proyecto, desde la planeación hasta la implementación.",
   },
-  // {
-  //   title: "Modelo de la base de datos",
-  //   image: "https://picsum.photos/id/30/400/300",
-  //   description:
-  //     "Estructura técnica que define las relaciones entre los datos del sistema.",
-  // },
   {
     title: "Mockups",
-    image: "https://picsum.photos/id/50/400/300",
     description:
       "Diseños visuales preliminares que ilustran la interfaz y funcionalidad de la plataforma.",
   },
 ];
 ---
 
-<section class="grid place-content-center p-8 text-white">
+<section id="documents" class="grid place-content-center p-8 text-white">
   <div class="container grid max-w-4xl">
     <div class="info-documents">
       <h2 class="text-4xl font-bold mb-2">Documentos</h2>
@@ -48,12 +40,24 @@ const documents = [
     {
       documents.map((document) => {
         return (
-          <div class="bg-primary p-4 rounded-md">
-            <h3 class="font-bold">{document.title}</h3>
+          <div class="flex flex-col justify-between bg-primary p-4 rounded-md shadow-lg shadow-dark">
+            <h3 class="font-bold text-lg">{document.title}</h3>
             <p class="text-sm">{document.description}</p>
-            <button class="bg-accent rounded-md mt-4 text-primary px-4 py-2">
-              Ver documento
-            </button>
+            {document.title === "Matriz DOFA" ? (
+              <a
+                target="_blank"
+                href="https://academiausbbogedu-my.sharepoint.com/:x:/g/personal/jssosam_academia_usbbog_edu_co/ET6SZullc5lLuPDa7QqUqQYBaG6ItPOuun_cFh_Q8HLi0w?e=rXGNdV"
+                class="flex items-center justify-between gap-x-2 font-semibold rounded-md text-accent self-end"
+              >
+                Ver
+                <Icon name={"arrow"} />
+              </a>
+            ) : (
+              <button class="flex items-center justify-between gap-x-2 font-semibold rounded-md text-accent self-end">
+                Ver
+                <Icon name={"arrow"} />
+              </button>
+            )}
           </div>
         );
       })

@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+
+import MER from "@/assets/images/mer.svg";
 
 const documents = [
   {
@@ -8,19 +11,22 @@ const documents = [
       "Evaluación estratégica de fortalezas, oportunidades, debilidades y amenazas del proyecto.",
   },
   {
+    id: "characterization",
     title: "Caracterización de la población",
     description:
       "Análisis detallado de los usuarios objetivo, incluyendo datos demográficos.",
   },
   {
+    id: "stages",
     title: "Etapas de desarrollo",
     description:
       "Resumen de las fases clave del proyecto, desde la planeación hasta la implementación.",
   },
   {
-    title: "Mockups",
+    id: "MER",
+    title: "Modelo Relacional",
     description:
-      "Diseños visuales preliminares que ilustran la interfaz y funcionalidad de la plataforma.",
+      "Estructura técnica que define las relaciones entre los datos del sistema.",
   },
 ];
 ---
@@ -53,7 +59,11 @@ const documents = [
                 <Icon name={"arrow"} />
               </a>
             ) : (
-              <button class="flex items-center justify-between gap-x-2 font-semibold rounded-md text-accent self-end">
+              <button
+                popovertarget={document.id}
+                popovertargetaction="toggle"
+                class="flex items-center justify-between gap-x-2 font-semibold rounded-md text-accent self-end"
+              >
                 Ver
                 <Icon name={"arrow"} />
               </button>
@@ -64,3 +74,42 @@ const documents = [
     }
   </div>
 </section>
+
+<div popover id="characterization" class="w-4/5 h-4/5 p-0">
+  <iframe width="100%" height="100%" src="/docs/characterization.pdf"></iframe>
+</div>
+
+<div popover id="stages" class="w-4/5 h-4/5 p-0">
+  <iframe width="100%" height="100%" src="/docs/stages.pdf"></iframe>
+</div>
+
+<div popover id="MER" class="bg-transparent p-0">
+  <Image src={MER} alt="Modelo Relacional" />
+</div>
+
+<style>
+  #characterization,
+  #stages,
+  #MER {
+    scale: 0;
+    opacity: 0;
+    transition:
+      scale 0.4s ease-in-out,
+      display 0.4s ease-in-out allow-discrete,
+      opacity 0.4s ease-in-out;
+    &::backdrop {
+      backdrop-filter: blur(2px);
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    &:popover-open {
+      scale: 1;
+      opacity: 1;
+
+      @starting-style {
+        scale: 0;
+        opacity: 0;
+      }
+    }
+  }
+</style>
